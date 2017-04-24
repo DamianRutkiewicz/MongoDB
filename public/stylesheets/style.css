@@ -1,0 +1,155 @@
+body {
+  padding: 0px;
+  margin: 0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #56727A;
+}
+
+a {
+  color: #00B7FF;
+}
+.under-nav{
+  font-size: 14px;
+  text-align: right;
+  color: white;
+  line-height: 30px;
+}
+nav{
+  width: 100%;
+  height: 60px;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: right;
+  z-index: 20;
+
+  -webkit-box-shadow: 0px 7px 35px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 7px 35px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 7px 35px 0px rgba(0,0,0,0.75);
+}
+nav img{
+  position: relative;
+/*  margin-top:-60px;
+  top: 50%*/
+  height: 60px;
+  width: auto;
+  float: left;
+}
+nav a{
+  color: white;
+  transition: 0.3s all linear;
+  cursor: pointer;
+}
+nav a:hover{
+  color: #3b5998;
+  text-decoration: none;
+}
+nav i{
+  font-size: 35px;
+}
+.list-it::after{
+  content: " |"
+}
+h1{
+  color: white;
+}
+.content{
+  background-color: rgba(255, 255, 255, 0.3); 
+  height: auto;
+  overflow: auto;
+}
+section {
+  float: left;
+  width: 100%;
+  padding: 10px;
+  min-height: 400px;
+}
+
+section:first-of-type {
+  margin-left: 0;
+}
+
+section:last-of-type {
+  margin-right: 0;
+}
+.insert{
+  display: none;
+}
+section h3 {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+}
+
+.input{
+  margin: 10px;
+}
+.input label {
+  display: block;
+  font-weight: bold;
+  padding: 2px 0;
+}
+
+input,
+button {
+  font: inherit;
+}
+
+button {
+  margin-top: 10px;
+  border: none;
+  box-shadow: 1px 1px 1px #34495e;
+  border-radius: 0;
+  background: #ecf0f1;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #bdc3c7;
+}
+
+.item {
+  margin: 10px 0;
+  padding: 10px;
+  transition: 0.5s all linear;
+  opacity: 0.2;
+  transform: translate(-20px, -20px);
+}
+.showing{
+  opacity: 1;
+  transform: translate(0,0);
+}
+.box{
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: white;
+
+  -webkit-box-shadow: 2px 2px 18px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: 2px 2px 18px -6px rgba(0,0,0,0.75);
+box-shadow: 2px 2px 18px -6px rgba(0,0,0,0.75);
+}
+.foto{
+ text-align: center;
+
+}
+.virtual-input{
+  border: none;
+  box-sizing: border-box;
+  height: 25px;
+  border-radius: 4px;
+  width: 100%;
+}
+.virtual-input:focus{
+  border: 1px solid #08402B;
+  box-sizing: border-box;
+}
+.img-min{
+  width: 256px;
+  height: 256px;
+}
+footer{
+  width: 100%;
+  height: 40px;
+  color: white;
+  margin-top: 50px;
+}

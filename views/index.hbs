@@ -1,0 +1,117 @@
+
+
+<h1>System zarządzania Media Expert</h1>
+<div class="content">
+<section class="insert">
+    <div class="col-md-6">
+        <h3>Dodaj produkt</h3>
+        <form action="/insert" method="post" id="insert-form">
+            <div class="input">
+                <input type="text" id="title" name="title" placeholder="Tytuł">
+            </div>
+            <div class="input">
+                <input type="text" id="content" name="content" placeholder="Opis">
+            </div>
+            <div class="input">
+                <input type="text" id="author" name="price" placeholder="Cena">
+            </div>
+            <div class="input">
+                <label for="author">Typ</label>
+                 <select name="type">
+                  <option value="telewizor">Telewizor</option>
+                  <option value="monitor">Monitor</option>
+                  <option value="komputer">Komputer</option>
+                  <option value="telefon">Telefon</option>
+                </select> 
+            </div>
+            <button type="submit" class="btn btn-success">Dodaj</button>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h3>Dodanie Atrybutu</h3>
+        <input type="text" name="new-atr" class="new-inpt">
+        <button type="button" id="new-atr-btn" class="btn btn-info">Dodaj</button>
+    </div>  
+</section>
+<section class="get">
+    <h3>Wczytaj produkty</h3>
+    <a href="/get-data">wczytaj</a>
+    <div>
+        {{# each items }}
+            <figure class="item col-md-4">
+                <div class="box">
+                    <div class="foto"><img class="img-min" src="{{ this.url }}"></div>
+                    <div class="outer">
+                        <form action="../update" method="post">
+                            <div><h3><input type="text" class="virtual-input" value="{{ this.title }}" name="title" /></h3></div>
+                            <div>Opis:<input type="text" class="virtual-input" value="{{ this.content }}" name="content"/></div>
+                            <div>Cena:<input type="text" class="virtual-input" value="{{ this.price }}" name="price"/></div>
+                            <div>ID: <input type="text" class="virtual-input" value="{{ this._id }}" name="_id" readonly></div>
+                            <div>Typ: <!-- {{ this.type }} -->
+                                <select name="type" class="virtual-input" id="select-input">
+                                  <option value="{{ this.type }}" selected="selected" style="display: none">{{ this.type }}</option>
+                                  <option value="telewizor">Telewizor</option>
+                                  <option value="monitor">Monitor</option>
+                                  <option value="komputer">Komputer</option>
+                                  <option value="telefon">Telefon</option>
+                                </select> 
+                            </div>
+                            {{#if this.new}}
+                               {{ this.inptName }}: <input type="text" class="virtual-input" value="{{ this.new }}" name="price"/></div>
+                           {{/if}}
+                            <button type="submit" class="btn btn-info">Edytuj</button>
+                        </form>
+                    
+                    <form action="/delete" method="post" class="del">
+                        <input type="text" id="id" name="id" value="{{ this._id }}" style="display: none">
+                        <button type="submit" class="btn btn-danger">usuń</button>
+                    </form>
+
+                </div>
+            </figure>
+        {{/each}}
+    </div>
+</section>
+
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+    $('figure').each(function(i){
+
+                setTimeout(function(){
+                    $('figure').eq(i).addClass('showing');
+                },150*(i+1));
+                
+
+    });
+
+    $(document).on("scroll",function(){
+        if(($(window).scrollTop())>($("nav").scrollTop())){
+            $("nav").css({"position":"fixed","top":"0"});
+        }
+        else{
+            $("nav").css({"position":"static","top":"0"});
+        }
+    });
+
+    $("#add").on("click",function(){
+        $(".get").css({"display":"none"});
+        $(".insert").css({"display":"block"});
+    });
+    $("#all-it").on("click",function(){
+        $(".insert").css({"display":"none"});
+        $(".get").css({"display":"block"});
+    });
+
+    $("#new-atr-btn").on("click",function(){
+        var str = "<div class='input'><input type='text' name='inptName' style='display:none' value='"+$(".new-inpt").val()+"'><input type='text' name='new' id='"+$(".new-inpt").val()+"' placeholder='"+$(".new-inpt").val()+"'></div>";
+        $("#insert-form").prepend(str);
+       
+    })
+})
+
+    
+</script>
